@@ -1,2 +1,6 @@
-This is common line
+
+<<<<<<< HEAD
 This is feature1 line
+=======
+This is feature2 line
+>>>>>>> feature2
