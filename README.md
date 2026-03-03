@@ -4,6 +4,15 @@
 
 # 1️⃣ PART 1: VERSION CONTROL (GIT)
 
+## 1.0 Create Public Repository & Setup SSH
+
+1. Create a **Public Repository** on GitHub.
+2. Initialize Git locally → `git init` → `git add .` → `git commit -m "Initial commit"`
+3. Generate SSH key → `ssh-keygen -t ed25519 -C "your-email@example.com"`
+4. Add SSH key to GitHub and connect repo → `git remote add origin git@github.com:username/repo.git` → `git push -u origin main`
+
+---
+
 ## 1.1 Difference Between `git fetch` and `git pull`
 
 | Feature                   | git fetch  | git pull              |
@@ -256,21 +265,5 @@ kubectl apply -f deployment.yaml
 
 * Use CloudWatch or EFK stack
 
----
-
-# 📁 FINAL REPOSITORY STRUCTURE
-
-```
-lemici-devops-assignment/
-│
-├── Dockerfile
-├── app.py
-├── requirements.txt
-├── k8s/
-│   ├── deployment.yaml
-│   └── service.yaml
-└── .github/
-    └── workflows/
-        └── docker.yml
 
 
