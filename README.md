@@ -201,7 +201,8 @@ Output:
 ```
 Hello, DevOps Internship Assignment!
 ```
-
+'/c/Users/akash/OneDrive/Pictures/Screenshots/Screenshot (67).png'
+'/c/Users/akash/OneDrive/Pictures/Screenshots/Screenshot (66).png'
 ---
 
 # ✅ Part 3: Kubernetes (EKS Basics)
@@ -403,22 +404,4 @@ lemici-devops-assignment/
 └── .github/
     └── workflows/
         └── docker.yml
-```
-
----
-
-# 🎯 Assignment Completed Successfully
-
-DevOps concepts covered:
-
-* Git & Conflict Resolution
-* Docker & Containerization
-* Kubernetes (Deployment & Service)
-* CI/CD Pipeline
-
----
-
-**Submitted by:**
-Akasha Sunagar
-DevOps Internship Assignment
 
