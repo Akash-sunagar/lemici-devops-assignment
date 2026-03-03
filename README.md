@@ -200,9 +200,8 @@ Output:
 
 ```
 Hello, DevOps Internship Assignment!
-```
-'/c/Users/akash/OneDrive/Pictures/Screenshots/Screenshot (67).png'
-'/c/Users/akash/OneDrive/Pictures/Screenshots/Screenshot (66).png'
+```i
+![Flask App Output](screenshots/flask-app-output.png)
 ---
 
 # ✅ Part 3: Kubernetes (EKS Basics)
