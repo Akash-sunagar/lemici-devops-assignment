@@ -201,7 +201,6 @@ Output:
 ```
 Hello, DevOps Internship Assignment!
 ```i
-![Flask App Output](screenshots/flask-app-output.png)
 ---
 
 # ✅ Part 3: Kubernetes (EKS Basics)
@@ -403,4 +402,106 @@ lemici-devops-assignment/
 └── .github/
     └── workflows/
         └── docker.yml
+
+# Part 5: Monitoring & Logs (Short Version)
+
+## 1️⃣ Metrics vs Logs vs Traces
+
+* **Metrics** → Numeric system data (CPU, Memory, Requests). Used for monitoring & alerts.
+* **Logs** → Detailed event records (errors, requests). Used for troubleshooting.
+* **Traces** → Track request flow across services. Used to find latency issues in microservices.
+
+---
+
+## 2️⃣ If Kubernetes Pod Crashes – Debug Steps
+
+```bash
+kubectl get pods
+```
+
+Check pod status (CrashLoopBackOff, Error).
+
+```bash
+kubectl describe pod <pod-name>
+```
+
+Check events, image errors, resource issues.
+
+```bash
+kubectl logs <pod-name>
+```
+
+Check application logs.
+
+```bash
+kubectl logs <pod-name> --previous
+```
+
+Check logs before crash.
+
+```bash
+kubectl top pod <pod-name>
+```
+
+Check CPU/Memory usage.
+
+---
+
+## 3️⃣ Monitoring Tools for AWS EKS
+
+* **CloudWatch** → AWS native monitoring & logs.
+* **Prometheus** → Kubernetes metrics collection.
+* **Grafana** → Dashboards & visualization.
+* **ELK/EFK** → Centralized logging.
+
+✅ Recommended: Prometheus + Grafana + CloudWatch Logs.
+
+---
+
+# Part 6: Problem-Solving Scenario (Short)
+
+## Requirements
+
+* Code on GitHub
+* Containerize app
+* Auto-deploy on merge to main
+* Logs visible to dev team
+
+---
+
+## Solution
+
+### 1️⃣ Containerize
+
+Create Dockerfile → Build → Push to DockerHub.
+
+### 2️⃣ Deploy to EKS
+
+Create Deployment & Service YAML →
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+### 3️⃣ Setup CI/CD (GitHub Actions)
+
+Trigger on push to main:
+
+* Build Docker image
+* Push to DockerHub
+* Deploy to EKS
+
+### 4️⃣ Logging
+
+Use CloudWatch or EFK stack so developers can view logs.
+
+---
+
+## Final Flow
+
+GitHub → GitHub Actions → DockerHub → AWS EKS → CloudWatch Logs
+
+---
+
+✅ Containerized + Automated + Monitored Setup
 
