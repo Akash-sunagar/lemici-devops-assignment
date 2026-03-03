@@ -1,0 +1,2 @@
+This is common line
+This is feature2 line
