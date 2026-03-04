@@ -1,66 +1,71 @@
-LEMICI DEVOPS INTERNSHIP ASSIGNMENT
-1️⃣ PART 1: VERSION CONTROL (GIT)
-1.0 Create Public Repository & Setup SSH
+# 🚀 LEMICI DEVOPS INTERNSHIP ASSIGNMENT
 
-Create a Public Repository on GitHub
+---
 
-Initialize Git locally
+# 1️⃣ PART 1: VERSION CONTROL (GIT)
 
-git init
-git add .
-git commit -m "Initial commit"
+## 1.0 Create Public Repository & Setup SSH
 
-Generate SSH key
+1. Create a **Public Repository** on GitHub.
+2. Initialize Git locally → `git init` → `git add .` → `git commit -m "Initial commit"`
+3. Generate SSH key → `ssh-keygen -t ed25519 -C "your-email@example.com"`
+4. Add SSH key to GitHub and connect repo → `git remote add origin git@github.com:username/repo.git` → `git push -u origin main`
 
-ssh-keygen -t ed25519 -C "your-email@example.com"
+---
 
-Add SSH key to GitHub and connect repository
+## 1.1 Difference Between `git fetch` and `git pull`
 
-git remote add origin git@github.com:username/repo.git
-git push -u origin main
-1.1 Difference Between git fetch and git pull
-Feature	git fetch	git pull
-Downloads Changes	✅ Yes	✅ Yes
-Merges Automatically	❌ No	✅ Yes
-Updates Working Directory	❌ No	✅ Yes
-Safe Operation	✅ Safe	⚠ May Cause Conflicts
-Combination	Only fetch	fetch + merge
-1.2 git fetch
+| Feature                   | git fetch  | git pull              |
+| ------------------------- | ---------- | --------------------- |
+| Downloads Changes         | ✅ Yes      | ✅ Yes                 |
+| Merges Automatically      | ❌ No       | ✅ Yes                 |
+| Updates Working Directory | ❌ No       | ✅ Yes                 |
+| Safe Operation            | ✅ Safe     | ⚠ May Cause Conflicts |
+| Combination               | Only fetch | fetch + merge         |
 
-Downloads latest changes from remote repository
+### 1.2 `git fetch`
 
-Updates remote tracking branch (origin/main)
+* Downloads latest changes from remote repository
+* Updates remote tracking branch (origin/main)
+* Does NOT change current branch
 
-Does NOT change current branch
-
+```bash
 git fetch origin
-1.3 git pull
+```
 
-Downloads latest changes
+### 1.3 `git pull`
 
-Automatically merges into current branch
+* Downloads latest changes
+* Automatically merges into current branch
+* May cause conflicts
 
-May cause conflicts
-
+```bash
 git pull origin main
-1.4 How to Resolve Merge Conflict
+```
 
-Open the conflicted file
+### 1.4 How to Resolve Merge Conflict
 
-Remove conflict markers
+1. Open the file
+2. Remove conflict markers
+3. Keep correct code
+4. Save file
 
-Keep the correct code
-
-Save the file
-
+```bash
 git add filename
 git commit -m "Conflict resolved"
 git push origin main
-2️⃣ PART 2: DOCKER & CONTAINERIZATION
-2.1 Simple Flask Application
-app.py
-from flask import Flask
+```
 
+---
+
+# 2️⃣ PART 2: DOCKER & CONTAINERIZATION
+
+## 2.1 Simple Flask Application
+
+### app.py
+
+```python
+from flask import Flask
 app = Flask(__name__)
 
 @app.route("/")
@@ -69,34 +74,52 @@ def home():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
-requirements.txt
+```
+
+### requirements.txt
+
+```
 flask
-2.2 Dockerfile
+```
+
+---
+
+## 2.2 Dockerfile
+
+```dockerfile
 FROM python:3.9-slim
-
 WORKDIR /app
-
 COPY requirements.txt .
-
 RUN pip install --no-cache-dir -r requirements.txt
-
 COPY app.py .
-
 EXPOSE 5000
-
 CMD ["python", "app.py"]
-2.3 Dockerfile vs Image vs Container
-Dockerfile	Docker Image	Docker Container
-Blueprint	Built Package	Running Instance
-Text Instructions	App + Dependencies	Executing App
-2.4 Running Application Locally
+```
+
+---
+
+## 2.3 Dockerfile vs Image vs Container
+
+| Dockerfile        | Docker Image       | Docker Container |
+| ----------------- | ------------------ | ---------------- |
+| Blueprint         | Built Package      | Running Instance |
+| Text Instructions | App + Dependencies | Executing App    |
+
+---
+
+## 2.4 Running Application Locally
+
+```bash
 docker build -t my-flask-app .
 docker run -p 5000:5000 my-flask-app
+```
 
-Access application:
+Access: [http://localhost:5000](http://localhost:5000)
 
-http://localhost:5000
-3️⃣ PART 3: KUBERNETES (EKS BASICS)
+---
+
+# 3️⃣ PART 3: KUBERNETES (EKS BASICS)
+
 3.1 Pod vs Deployment vs Service
 Pod
 
@@ -112,7 +135,7 @@ Manages Pods
 
 Maintains desired number of replicas
 
-Supports scaling and updates
+Supports scaling and rolling updates
 
 Service
 
@@ -122,13 +145,13 @@ Provides stable networking
 
 Load balances traffic between Pods
 
-3.2 Why do we need EKS instead of running Kubernetes on VMs?
+3.2 Why Do We Need EKS Instead of Running Kubernetes on VMs?
 
-Running Kubernetes on Virtual Machines requires manual setup, management, and maintenance.
+Running Kubernetes manually on Virtual Machines requires manual configuration, management, and maintenance of control plane components.
 
-Managed Kubernetes services like Amazon EKS simplify this process.
+Managed Kubernetes services like Amazon EKS (Elastic Kubernetes Service) simplify Kubernetes operations.
 
-Advantages of EKS:
+Advantages of Amazon EKS
 
 No control plane management
 
@@ -136,11 +159,15 @@ Automatic updates and security patches
 
 High availability across multiple availability zones
 
-Easy integration with AWS services (IAM, CloudWatch, Load Balancer)
+Easy integration with AWS services (IAM, CloudWatch, Load Balancers)
 
 Reduced operational overhead
 
-3.3 Deployment YAML
+---
+
+## 3.2 Deployment YAML
+
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -160,7 +187,13 @@ spec:
         image: my-flask-app:latest
         ports:
         - containerPort: 5000
-3.4 Service YAML
+```
+
+---
+
+## 3.3 Service YAML
+
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -172,8 +205,15 @@ spec:
   ports:
   - port: 80
     targetPort: 5000
-4️⃣ PART 4: CI/CD PIPELINE
-4.1 GitHub Actions Workflow
+```
+
+---
+
+# 4️⃣ PART 4: CI/CD PIPELINE
+
+## 4.1 GitHub Actions Workflow
+
+```yaml
 name: Docker CI Pipeline
 
 on:
@@ -184,62 +224,89 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout Code
       uses: actions/checkout@v3
 
     - name: Build Docker Image
       run: docker build -t my-flask-app .
-5️⃣ PART 5: MONITORING & LOGS
-5.1 Metrics vs Logs vs Traces
+```
 
-Metrics → CPU, Memory, Requests
+---
 
-Logs → Errors and events
+# 5️⃣ PART 5: MONITORING & LOGS
 
-Traces → Request flow across services
+## 5.1 Metrics vs Logs vs Traces
 
-5.2 Debugging Crashed Pod
+1. Metrics → CPU, Memory, Requests
+2. Logs → Errors and events
+3. Traces → Request flow across services
+
+---
+
+## 5.2 Debugging Crashed Pod
+
+```bash
 kubectl get pods
 kubectl describe pod <pod-name>
 kubectl logs <pod-name>
 kubectl logs <pod-name> --previous
 kubectl top pod <pod-name>
-6️⃣ PART 6: PROBLEM-SOLVING SCENARIO
-6.1 Requirements
+```
 
-Code stored on GitHub
+---
 
-Application containerized
+# 6️⃣ PART 6: PROBLEM-SOLVING SCENARIO
 
-Auto deployment on merge to main
+## 6.1 Requirements
 
-Logs accessible to development team
+1. Code on GitHub
+2. Containerize application
+3. Auto-deploy on merge to main
+4. Logs visible to dev team
 
-6.2 Solution Steps
-Step 1: Containerize Application
+---
 
-Create Dockerfile
+## 6.2 Solution Steps
 
-Build Docker image
+### Step 1: Containerize
 
-Push image to DockerHub
+* Create Dockerfile
+* Build image
+* Push to DockerHub
 
-Step 2: Deploy to EKS
+### Step 2: Deploy to EKS
+
+```bash
 kubectl apply -f deployment.yaml
-Step 3: Setup CI/CD
+```
 
-Trigger pipeline on push to main
+### Step 3: Setup CI/CD
 
-Build Docker image
+* Trigger on push to main
+* Build image
+* Deploy to EKS
 
-Deploy application to EKS
+### Step 4: Logging
 
-Step 4: Logging
+* Use CloudWatch or EFK stack
 
-Use monitoring and logging tools such as:
+---
 
-AWS CloudWatch
+# 📁 FINAL REPOSITORY STRUCTURE
 
-EFK Stack (Elasticsearch, Fluentd, Kibana)
+```
+lemici-devops-assignment/
+│
+├── Dockerfile
+├── app.py
+├── requirements.txt
+├── k8s/
+│   ├── deployment.yaml
+│   └── service.yaml
+└── .github/
+    └── workflows/
+        └── docker.yml
+```
+
+
