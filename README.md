@@ -355,6 +355,7 @@ Works with Prometheus and CloudWatch
 
 Provides dashboards for system metrics
 ```
+---
 
 ---
 
@@ -362,10 +363,10 @@ Provides dashboards for system metrics
 
 ## 6.1 Requirements
 
-1. Code on GitHub
-2. Containerize application
-3. Auto-deploy on merge to main
-4. Logs visible to dev team
+1. Code on GitHub  
+2. Containerize application  
+3. Auto-deploy on merge to main  
+4. Logs visible to dev team  
 
 ---
 
@@ -373,9 +374,9 @@ Provides dashboards for system metrics
 
 ### Step 1: Containerize
 
-* Create Dockerfile
-* Build image
-* Push to DockerHub
+- Create Dockerfile  
+- Build Docker image  
+- Push image to DockerHub  
 
 ### Step 2: Deploy to EKS
 
@@ -383,14 +384,23 @@ Provides dashboards for system metrics
 kubectl apply -f deployment.yaml
 ```
 
+This command deploys the application to the Kubernetes cluster using the deployment configuration.
+
+---
+
 ### Step 3: Setup CI/CD
 
-* Trigger on push to main
-* Build image
-* Deploy to EKS
+- Trigger pipeline on push to `main`  
+- Build Docker image automatically  
+- Deploy the updated image to EKS  
+
+---
 
 ### Step 4: Logging
 
-* Use CloudWatch or EFK stack
+Use monitoring and logging tools such as:
+
+- **AWS CloudWatch** – Collects logs and metrics from the EKS cluster  
+- **EFK Stack (Elasticsearch, Fluentd, Kibana)** – Used for centralized logging and log visualization  
 
 ---
