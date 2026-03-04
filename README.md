@@ -118,30 +118,51 @@ Access: [http://localhost:5000](http://localhost:5000)
 
 ---
 
-# 3️⃣ PART 3: KUBERNETES (EKS BASICS)
+3️⃣ PART 3: KUBERNETES (EKS BASICS)
+3.1 Pod vs Deployment vs Service
 
-## 3.1 Pod vs Deployment vs Service
+Pod
 
-### Pod
+Smallest deployable unit in Kubernetes
 
-* Smallest deployable unit
-* Runs container
+Runs one or more containers
 
-### Deployment
+Shares network and storage
 
-* Manages pods
-* Maintains replicas
+Deployment
 
-### Service
+Manages and maintains Pods
 
-* Exposes pods
-* Load balances traffic
+Ensures the desired number of replicas are running
 
----
+Supports updates and scaling
 
-## 3.2 Deployment YAML
+Service
 
-```yaml
+Exposes Pods to internal or external traffic
+
+Provides stable networking for Pods
+
+Load balances traffic between Pods
+
+3.2 Why do we need EKS (Managed Kubernetes) instead of running Kubernetes on VMs?
+
+Running Kubernetes directly on Virtual Machines requires manual setup and maintenance.
+Managed Kubernetes services like Amazon EKS simplify this process.
+
+Reasons to use EKS:
+
+No Control Plane Management – AWS manages the Kubernetes master nodes.
+
+Automatic Updates & Patching – EKS handles updates and security patches.
+
+High Availability – Control plane is automatically distributed across multiple AWS zones.
+
+Easy Integration with AWS Services – Works with IAM, CloudWatch, Load Balancers, etc.
+
+Reduced Operational Overhead – Developers focus on applications instead of infrastructure.
+
+3.3 Deployment YAML
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -161,13 +182,7 @@ spec:
         image: my-flask-app:latest
         ports:
         - containerPort: 5000
-```
-
----
-
-## 3.3 Service YAML
-
-```yaml
+3.4 Service YAML
 apiVersion: v1
 kind: Service
 metadata:
@@ -179,7 +194,6 @@ spec:
   ports:
   - port: 80
     targetPort: 5000
-```
 
 ---
 
