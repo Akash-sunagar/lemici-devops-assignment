@@ -129,7 +129,7 @@ Runs one or more containers
 
 Shares network and storage
 
-Deployment
+2)Deployment
 
 Manages Pods
 
@@ -137,7 +137,7 @@ Maintains desired number of replicas
 
 Supports scaling and rolling updates
 
-Service
+3)Service
 
 Exposes Pods to internal or external traffic
 
@@ -147,21 +147,21 @@ Load balances traffic between Pods
 
 3.2 Why Do We Need EKS Instead of Running Kubernetes on VMs?
 
-Running Kubernetes manually on Virtual Machines requires manual configuration, management, and maintenance of control plane components.
+a)Running Kubernetes manually on Virtual Machines requires manual configuration, management, and maintenance of control plane components.
 
-Managed Kubernetes services like Amazon EKS (Elastic Kubernetes Service) simplify Kubernetes operations.
+b)Managed Kubernetes services like Amazon EKS (Elastic Kubernetes Service) simplify Kubernetes operations.
 
 Advantages of Amazon EKS
 
-No control plane management
+a)No control plane management
 
-Automatic updates and security patches
+b)Automatic updates and security patches
 
-High availability across multiple availability zones
+c)High availability across multiple availability zones
 
-Easy integration with AWS services (IAM, CloudWatch, Load Balancers)
+d)Easy integration with AWS services (IAM, CloudWatch, Load Balancers)
 
-Reduced operational overhead
+e)Reduced operational overhead
 
 ---
 
@@ -345,7 +345,6 @@ Works with Prometheus and CloudWatch
 
 Provides dashboards for system metrics
 ```
----
 
 ---
 
