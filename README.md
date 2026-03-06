@@ -267,10 +267,6 @@ CPU usage
 
 Memory usage
 
-Request count
-
-Response time
-
 Metrics help in detecting performance issues and system health trends.
 
 Logs
@@ -283,10 +279,6 @@ Application errors
 
 System events
 
-Debug information
-
-Access logs
-
 Logs help developers understand what happened in the system at a specific time.
 
 Traces
@@ -298,8 +290,6 @@ Examples:
 API request flow between microservices
 
 Latency between services
-
-Bottleneck detection
 
 Traces help in understanding performance problems across multiple services.
 
