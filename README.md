@@ -216,11 +216,11 @@ spec:
 This workflow demonstrates a simple CI/CD pipeline using GitHub Actions.
 It performs three basic steps for this assignment:
 
-Builds the Docker image
+1)Builds the Docker image
 
-Runs a simple test step
+2)Runs a simple test step
 
-Simulates pushing the Docker image to DockerHub
+3)Simulates pushing the Docker image to DockerHub
 ```yaml
 name: Docker CI Pipeline
 
@@ -239,13 +239,13 @@ jobs:
     - name: Build Docker Image
       run: docker build -t my-flask-app .
 ```
-Checkout Repository – Downloads the project code from GitHub.
+a)Checkout Repository – Downloads the project code from GitHub.
 
-Build Docker Image – Builds the Docker container image for the application.
+b)Build Docker Image – Builds the Docker container image for the application.
 
-Run Simple Tests – Runs a basic test step (simulated for this assignment).
+c)Run Simple Tests – Runs a basic test step (simulated for this assignment).
 
-Simulate Docker Push – Demonstrates pushing the image to DockerHub (simulated without credentials).
+d)Simulate Docker Push – Demonstrates pushing the image to DockerHub (simulated without credentials).
 
 ---
 
